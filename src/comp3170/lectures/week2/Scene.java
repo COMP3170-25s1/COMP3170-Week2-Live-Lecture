@@ -1,7 +1,6 @@
 package comp3170.lectures.week2;
 
 public class Scene {
-	
 	private House house;
 	
 	public Scene () {

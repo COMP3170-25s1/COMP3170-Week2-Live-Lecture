@@ -21,30 +21,22 @@ public class Week2 implements IWindowListener{
 	private int screenHeight = 1000;
 	private Vector4f clearColour = new Vector4f(0.0f, 0.0f, 0.5f, 1.0f);
 	
-	final private File DIRECTORY = new File("src/");
-	
+	final private File DIRECTORY = new File("src/comp3170/lectures/week2/");
 	private Scene scene;
 	
 	public Week2() throws OpenGLException {
-		
-		// Create a window with a title, a size and a listener (this)
-		Window window = new Window("Maow =^.^=", screenWidth, screenHeight, this);
-		
-		// Start running the window
-		window.run();
+		Window window = new Window("Maow =^.^=", screenWidth, screenHeight, this);	// Create a window with a title, a size and a listener (this)
+		window.run();	// Start running the window
 	}
 
 	public static void main(String[] args) throws OpenGLException {
 		new Week2();
-
 	}
 
 	@Override
 	public void init() {
 		new ShaderLibrary(DIRECTORY);
-		
 		glClearColor(clearColour.x, clearColour.y, clearColour.z, clearColour.w);
-		
 		scene = new Scene();
 	}
 
@@ -56,12 +48,9 @@ public class Week2 implements IWindowListener{
 
 	@Override
 	public void resize(int width, int height) {
-		
 	}
 
 	@Override
 	public void close() {
-		
 	}
-
 }

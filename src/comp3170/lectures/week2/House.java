@@ -23,23 +23,17 @@ public class House {
 	private int vertexBuffer;
 	private int[] indices;
 	private int indexBuffer;
-	
 	private Vector3f[] colours;
 	private int colourBuffer;
 	
 	private Shader shader;
-	
-	private Vector3f colour = new Vector3f(1.0f, 0.7f, 1.0f); // LILAC - No longer used now we're doing vertex colours
-	
+		
 	public House() {
 		
 		// compile shader 
 		shader = ShaderLibrary.instance.compileShader(VERTEX_SHADER, FRAGMENT_SHADER);
 		
-		// vertices as (x,y) pairs
-		
 		// @formatter:off
-		
 		vertices = new Vector4f[] {
 				new Vector4f(-0.8f, -0.8f, 0.0f, 1.0f), // P0
 				new Vector4f(0.8f, -0.8f, 0.0f, 1.0f),  // P1
@@ -47,7 +41,6 @@ public class House {
 				new Vector4f(0.8f, 0.4f, 0.0f, 1.0f),   // P2
 				new Vector4f(-0.8f, 0.4f, 0.0f, 1.0f),  // P3
 				new Vector4f(0.f, 0.8f, 0.0f, 1.0f),    // P4	
-			
 		};
 		
 		indices = new int[] {
@@ -70,16 +63,14 @@ public class House {
 		vertexBuffer = GLBuffers.createBuffer(vertices);
 		indexBuffer = GLBuffers.createIndexBuffer(indices);
 		colourBuffer = GLBuffers.createBuffer(colours);
-		
 	}
 	
 	public void draw() {
 		shader.enable();
-		
 		shader.setAttribute("a_position", vertexBuffer);
 		shader.setAttribute("a_colour",colourBuffer);
+		
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-
 		glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_INT, 0);
 		
 	}
